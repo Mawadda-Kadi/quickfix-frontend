@@ -1,0 +1,63 @@
+<h1>Neues Ticket erstellen</h1>
+
+@if (createError) {
+<p>{{ createError }}</p>
+}
+
+<form (ngSubmit)="createTicket()">
+
+  <div>
+    <label for="title">Titel</label>
+    <input
+      id="title"
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      required
+    >
+  </div>
+
+  <div>
+    <label for="description">Beschreibung</label>
+    <textarea
+      id="description"
+      name="description"
+      [(ngModel)]="description"
+      rows="5"
+    ></textarea>
+  </div>
+
+  <div>
+    <label for="category">Kategorie</label>
+    <select
+      id="category"
+      name="category"
+      [(ngModel)]="category"
+    >
+      <option value="HARDWARE">Hardware</option>
+      <option value="SOFTWARE">Software</option>
+      <option value="NETWORK">Netzwerk</option>
+      <option value="USER_ACCOUNT">Benutzerkonto</option>
+      <option value="OTHER">Sonstiges</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="priority">Priorität</label>
+    <select
+      id="priority"
+      name="priority"
+      [(ngModel)]="priority"
+    >
+      <option value="LOW">Niedrig</option>
+      <option value="MEDIUM">Mittel</option>
+      <option value="HIGH">Hoch</option>
+      <option value="CRITICAL">Kritisch</option>
+    </select>
+  </div>
+
+  <button type="submit">
+    Ticket erstellen
+  </button>
+
+</form>

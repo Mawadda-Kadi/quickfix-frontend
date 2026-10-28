@@ -1,0 +1,39 @@
+<h1>Tickets</h1>
+
+@if (tickets.length === 0) {
+<p>Keine Tickets vorhanden.</p>
+} @else {
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Titel</th>
+    <th>Kategorie</th>
+    <th>Priorität</th>
+    <th>Status</th>
+    <th>Erstellt von</th>
+    <th>Erstellt am</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  @for (ticket of tickets; track ticket.id) {
+  <tr>
+    <td>{{ ticket.id }}</td>
+    <td>
+      <a [routerLink]="['/tickets', ticket.id]">
+        {{ ticket.title }}
+      </a>
+    </td>
+    <td>{{ ticket.category | categoryLabel }}</td>
+    <td>{{ ticket.priority | priorityLabel }}</td>
+    <td>{{ ticket.status | statusLabel }}</td>
+    <td>{{ ticket.creatorUsername }}</td>
+    <td>
+      {{ ticket.createdAt | date:'dd.MM.yyyy HH:mm' }}
+    </td>
+  </tr>
+  }
+  </tbody>
+</table>
+}

@@ -1,0 +1,53 @@
+@if (ticket) {
+
+<h1>{{ ticket.title }}</h1>
+
+<p>
+  <strong>ID:</strong>
+  {{ ticket.id }}
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  {{ ticket.description }}
+</p>
+
+<p>
+  <strong>Kategorie:</strong>
+  {{ ticket.category | categoryLabel }}
+</p>
+
+<p>
+  <strong>Priorität:</strong>
+  {{ ticket.priority | priorityLabel }}
+</p>
+
+<p>
+  <strong>Status:</strong>
+  {{ ticket.status | statusLabel }}
+</p>
+
+<p>
+  <strong>Erstellt von:</strong>
+  {{ ticket.creatorUsername }}
+</p>
+
+<p>
+  <strong>Zugewiesen an:</strong>
+  {{ ticket.assignedSupportUsername ?? 'Noch nicht zugewiesen' }}
+</p>
+
+<p>
+  <strong>Erstellt am:</strong>
+  {{ ticket.createdAt | date:'dd.MM.yyyy HH:mm' }}
+</p>
+
+} @else {
+
+<p>Ticket wird geladen...</p>
+
+}
+
+<a routerLink="/tickets">
+  Zurück zur Ticketliste
+</a>
